@@ -1,6 +1,6 @@
 body {
     color:navy;
-    font-family:fantasy
+    
 }
 
 h2 {
@@ -13,4 +13,8 @@ pre {
 
 b {
     color:brown
+}
+
+a {
+    background-color:yellow
 }
