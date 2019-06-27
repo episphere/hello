@@ -1,0 +1,24 @@
+{
+  "name": "hello",
+  "version": "1.0.0",
+  "description": "hello episphere",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "functions-framework --target=helloWorld"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/episphere/hello.git"
+  },
+  "keywords": [
+    "episphere",
+    "FaaS"
+  ],
+  "author": "Jonas Almeida",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/episphere/hello/issues"
+  },
+  "homepage": "https://github.com/episphere/hello#readme"
+}
