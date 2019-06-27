@@ -1,34 +1,36 @@
+<html>
+<head>
 <script src="hello.js"></script>
-<link href="hello.css" rel="stylesheet">
-<h2>Education about Web Technology</h2>
-<p>
-The purpose of this page is promote awareness of the information exchanged online.
-What is shown here is not acquired through any gimmickry or elaborate hacking.
-It relies on a regular <a href="https://github.com/episphere/hello/blob/master/index.js" target="_blank">function</a> as a service (FaaS) <a href="https://us-central1-nih-nci-dceg-episphere-dev.cloudfunctions.net/helloMe" target="_blank">hosted</a> by a regular Cloud provider.
-<b>What you see below is the information you, yourself, provide everytime you click on a link</b>.
-In my oppinion, this should be discussed without alarm or libel, as education about the nature of the Web as a global village.
-That is, a place where we are not annonymous, which diminishes our privacy, but also creates entirely new opportunities for collective awareness.
-</p>
-<div id="aboutYou"><p style="color:red">loading the information provided by your calling this page ...</p></div>
+    <link href="hello.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+    <h2>Education about Web Technology</h2>
+    <p>
+    The purpose of this page is promote awareness of the information exchanged online.
+    What is shown here is not acquired through any gimmickry or elaborate hacking.
+    It relies on a regular <a href="https://github.com/episphere/hello/blob/master/index.js" target="_blank">function</a> as a service (FaaS) <a href="https://us-central1-nih-nci-dceg-episphere-dev.cloudfunctions.net/helloMe" target="_blank">hosted</a> by a regular Cloud provider.
+    <b>What you see below is the information you, yourself, provide everytime you click on a link</b>.
+    In my oppinion, this should be discussed without alarm or libel, as education about the nature of the Web as a global village.
+    That is, a place where we are not annonymous, which diminishes our privacy, but also creates entirely new opportunities for collective awareness.
+    </p>
+    <div id="aboutYou"><p style="color:red">loading the information provided by your calling this page ...</p></div>
 
-<div id="disqus_thread"></div>
-<script>
+    <div id="disqus_thread"></div>
+    </div>
+    <script>
 
-/**
-*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-/*
-var disqus_config = function () {
-this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
-*/
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://https-episphere-github-io-hello.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-                            
+    (function() { // DISQUS
+    var d = document, s = d.createElement('script');
+    s.src = 'https://https-episphere-github-io-hello.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+</body>
+</html>
