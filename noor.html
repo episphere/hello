@@ -1,0 +1,320 @@
+<html>
+
+    <meta charset="utf-8">
+
+        <head>
+
+                <title>Project</title>
+
+                <script src = "https://d3js.org/d3.v4.min.js"></script>
+
+                <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+
+                <script
+
+                src="https://code.jquery.com/jquery-3.4.1.js"
+
+                integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+
+                crossorigin="anonymous"></script>
+
+        </head>
+
+            <body>
+
+               
+
+                <h1>NIH Data</h1>
+
+
+
+
+                <div id="mychart"></div>
+
+                <p id="stuff"></p>
+
+              
+
+                <script>
+
+                    var request = new XMLHttpRequest()
+
+
+
+
+
+
+
+            request.open('GET', 'https://health.data.ny.gov/resource/gnzp-ekau.json', true)
+
+
+
+
+            request.onload = function() {
+
+            var data = JSON.parse(this.response)
+
+
+
+
+
+
+
+            if (request.status >= 200 && request.status < 400) {
+
+                data.forEach(thing => {
+
+                 
+
+                    // console.log(thing);
+
+                    // // console.log(thing);
+
+                    const p = $("#stuff");
+
+                    p.append = thing.hospital_county;
+
+                    p.append = thing.health_service_area;
+
+                    p.append = thing.age_group;
+
+                    $("#mychart").append(p)
+
+                    console.log(p);
+
+                    const div2 = $("<div>");
+
+             
+
+                    var width = 450
+
+                            height = 450
+
+                            margin = 40
+
+                            var legendRectSize = 18;
+
+                            var legendSpacing = 4;
+
+    
+
+                        var radius = Math.min(width, height) / 2 - margin
+
+                        
+
+              
+
+                        var svg = d3.select("#mychart")
+
+                          .append("svg")
+
+                            .attr("width", width)
+
+                            .attr("height", height)
+
+                          .append("g")
+
+                            .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+                        
+
+                     
+
+                        var data = thing;
+
+                        
+
+             
+
+                        var color = d3.scaleOrdinal()
+
+                          .domain(data)
+
+                          .range(d3.schemeSet2);
+
+                        
+
+                  
+
+                        var pie = d3.pie()
+
+                          .value(function(d) {return d.value; })
+
+                        var data_ready = pie(d3.entries(data))
+
+              
+
+                        var arcGenerator = d3.arc()
+
+                          .innerRadius(0)
+
+                          .outerRadius(radius)
+
+                        
+
+                        var legend = svg.selectAll('.legend')
+
+                        .data(color.domain())
+
+                        .enter()
+
+                        .append('g')
+
+                        .attr('class', 'legend')
+
+                        .attr('transform', function(d, i) {
+
+                            var height = legendRectSize + legendSpacing;
+
+                            var offset = height * color.domain().length / 2;
+
+                            var horz = 12 * legendRectSize;
+
+                            var vert = i * height - offset;
+
+                            return 'translate(' + horz + ',' + vert + ')';
+
+                        });
+
+                    
+
+                        legend.append('rect')
+
+                            .attr('width', legendRectSize)
+
+                            .attr('height', legendRectSize)
+
+                            .style('fill', color)
+
+                            .style('stroke', color);
+
+                            
+
+                        legend.append('text')
+
+                            .attr('x', legendRectSize + legendSpacing)
+
+                            .attr('y', legendRectSize - legendSpacing)
+
+                            .text(function(d) { return d; });
+
+                    
+
+
+
+
+
+
+
+                        svg
+
+                          .selectAll('mySlices')
+
+                          .data(data_ready)
+
+                          .enter()
+
+                          .append('path')
+
+                            .attr('d', arcGenerator)
+
+                            .attr('fill', function(d){ return(color(d.data.key)) })
+
+                            .attr("stroke", "black")
+
+                            .style("stroke-width", "2px")
+
+                            .style("opacity", 0.7)
+
+                          
+
+                        
+
+                      
+
+                        svg
+
+                      
+
+                          .data(data_ready)
+
+                          .enter()
+
+                          .append('text')
+
+                          .text(function(d){ console.log("hey" + d.data); return "Hospital County" } )
+
+                          
+
+                          .attr("transform", function(d) { return "translate(" + arcGenerator.centroid(d) + ")";  })
+
+                          .style("text-anchor", "middle")
+
+                          .style("font-size", 17)
+
+                          .append("svg:title")
+
+        
+
+                        
+
+                })
+
+            } else {
+
+                console.log('error')
+
+            }
+
+            
+
+                // function totalCount(data){
+
+                //     var countTotal = 0;
+
+                //     for (x in data) {
+
+                //         if (data.hasOwnProperty(x)) {
+
+                //             var countVal = data[x].count
+
+                //             var countTitle = data[x].Title
+
+                //             console.log(countTitle + ": " + countVal);
+
+                //             countTotal += Number(countVal);
+
+                //         }
+
+                //     }
+
+                //     $("#totaldatacount").append(countTotal);
+
+                //     console.log("Total Count = " + countTotal);
+
+                //     //document.getElementById("totalappcount").innerHTML = "Total Application Count: " + countTotal;
+
+                // }
+
+
+
+
+            }
+
+            request.send()
+
+
+
+
+                    // console.log(thing.hospital_county); 
+
+  
+
+                        </script>
+
+
+
+
+            </body>
+
+    </html>
